@@ -1,0 +1,23 @@
+{
+  "name": "javascript-profesional",
+  "version": "1.0.0",
+  "description": "Se un reproductor echo en Js(Html,Css)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesar-programmer/ProyectMediaPLayer.git"
+  },
+  "keywords": [
+    "JS",
+    "Css",
+    "Html"
+  ],
+  "author": "Cesar Cordova <cesarcordova.developer@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cesar-programmer/ProyectMediaPLayer/issues"
+  },
+  "homepage": "https://github.com/cesar-programmer/ProyectMediaPLayer#readme"
+}
