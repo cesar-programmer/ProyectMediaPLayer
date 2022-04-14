@@ -36,3 +36,12 @@ main {
 .movie {
   width: 100%;
 }
+
+.play{background-color:#e6008e;}
+.play:hover{background-color:#a03789;}
+
+.mute{background-color:#e6008e;}
+.mute:hover{background-color:#a03789;}
+
+.li{background-color:#007bb5;}
+.li:hover{background-color:#5daed4;}

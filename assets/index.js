@@ -1,26 +1,16 @@
+/* eslint-disable import/extensions */
 /* eslint-disable func-names */
-function MediaPlayer(config) {
-  this.media = config.el;
-}
-
-MediaPlayer.prototype.play = function () {
-  this.media.play();
-};
-
-MediaPlayer.prototype.pause = function () {
-  this.media.pause();
-};
-
-MediaPlayer.prototype.togglePlay = function () {
-  if (this.media.paused) {
-    this.play();
-  } else {
-    this.pause();
-  }
-};
+// eslint-disable-next-line import/extensions
+import MediaPlayer from './MediaPlayer.js';
+import AutoPlay from './plugins/AutoPlay.js';
 
 const video = document.querySelector('video');
-const player = new MediaPlayer({ el: video });
+// constructor del video a reproducirse mas la inicializacion de los plugins
+const player = new MediaPlayer({ el: video, plugins: [new AutoPlay()] });
 
-const button = document.querySelector('button');
-button.onclick = () => player.togglePlay();
+// acciones de los botones
+const buttonPlay = document.querySelector('#PlayPause');
+buttonPlay.onclick = () => player.togglePlay();
+
+const buttonMute = document.querySelector('#MuteUnmute');
+buttonMute.onclick = () => player.toggleMute();
