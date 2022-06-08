@@ -43,5 +43,12 @@ main {
 .mute{background-color:#e6008e;}
 .mute:hover{background-color:#a03789;}
 
+.Up{background-color:#ed6cbc;}
+.Up:hover{background-color:#471e3e;}
+
+.Down{background-color:#ed6cbc;}
+.Down:hover{background-color:#471e3e;}
+
+
 .li{background-color:#007bb5;}
 .li:hover{background-color:#5daed4;}

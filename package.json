@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/cesar-programmer/ProyectMediaPLayer/issues"
   },
-  "homepage": "https://github.com/cesar-programmer/ProyectMediaPLayer#readme"
+  "homepage": "https://github.com/cesar-programmer/ProyectMediaPLayer#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
 }
