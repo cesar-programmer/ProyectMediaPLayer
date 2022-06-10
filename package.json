@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Se un reproductor echo en Js(Html,Css)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html ejersicios/index.html ejersicios/**/*.html"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cesar-programmer/ProyectMediaPLayer.git"
@@ -20,7 +23,10 @@
     "url": "https://github.com/cesar-programmer/ProyectMediaPLayer/issues"
   },
   "homepage": "https://github.com/cesar-programmer/ProyectMediaPLayer#readme",
-  "devDependencies": {
+  "dependencies": {
     "parcel-bundler": "^1.12.5"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.3"
   }
 }

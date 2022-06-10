@@ -7,16 +7,18 @@ const VERSION = 'v1';
 
 async function precache() {
   const cache = await caches.open(VERSION);
-  return cache.addAll([
-    '/',
-    '/index.html',
-    '/assets/index.js',
-    '/assets/MediaPlayer.js',
-    '/assets/plugins/AutoPlay.js',
-    '/assets/plugins/AutoPause.js',
-    '/assets/index.css',
-    '/assets/video.mp4',
-  ]);
+  return () => {
+    cache.addAll([
+      '/',
+      '/index.html',
+      '/assets/index.js',
+      '/assets/MediaPlayer.js',
+      '/assets/plugins/AutoPlay.js',
+      '/assets/plugins/AutoPause.js',
+      '/assets/index.css',
+      '/assets/video.mp4',
+    ]);
+  };
 }
 
 async function cachedResponse(request) {
@@ -34,7 +36,9 @@ async function updateCache(request) {
   // Otherwise return a simple promise
   return response.status === 200
     ? cache.put(request, response)
-    : new Promise((resolve) => resolve('8D'));
+    : new Promise((resolve) => {
+      resolve('8D');
+    });
 }
 
 // instala los archivos enel cahce para que no se pierdadn cunado no haya internet
