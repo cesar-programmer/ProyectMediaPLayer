@@ -3,25 +3,25 @@
 /* eslint-disable import/extensions */
 /* eslint-disable func-names */
 // eslint-disable-next-line import/extensions
-import MediaPlayer from './MediaPlayer.js';
-import AutoPlay from './plugins/AutoPlay.js';
-import AutoPause from './plugins/AutoPause.js';
+import MediaPlayer from './MediaPlayer';
+import AutoPlay from './plugins/AutoPlay';
+import AutoPause from './plugins/AutoPause';
 
 const video = document.querySelector('video');
 // constructor del video a reproducirse mas la inicializacion de los plugins
 const player = new MediaPlayer({ el: video, plugins: [new AutoPlay(), new AutoPause()] });
 
 // acciones de los botones
-const buttonPlay = document.querySelector('#PlayPause');
+const buttonPlay: HTMLElement = document.querySelector('#PlayPause')!;
 buttonPlay.onclick = () => player.togglePlay();
 
-const buttonMute = document.querySelector('#MuteUnmute');
+const buttonMute: HTMLElement = document.querySelector('#MuteUnmute')!;
 buttonMute.onclick = () => player.toggleMute();
 
-const buttonVolumeUp = document.querySelector('#UpVolume');
+const buttonVolumeUp: HTMLElement = document.querySelector('#UpVolume')!;
 buttonVolumeUp.onclick = () => player.volumeUp();
 
-const buttonVolumeDown = document.querySelector('#DownVolume');
+const buttonVolumeDown: HTMLElement = document.querySelector('#DownVolume')!;
 buttonVolumeDown.onclick = () => player.volumeDown();
 
 if ('serviceWorker' in navigator) {
