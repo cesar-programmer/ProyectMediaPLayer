@@ -1,55 +1,54 @@
-//http://localhost:1234/ejersicios/typescript/index.html
-
-let muted: boolean = false
-
-let number: number = 23
-
-function add(a:number, b:number): number
-{
-  return a + b;
+interface Observer {
+  update: (data: any) => void;
 }
 
-const sum = add(23,3)
-console.log('hola hdtpmd')
-console.log(add(34,4))
-console.log(sum)
+interface Subject {
+  subscribe: (observer: Observer) => void;
+  unsubscribe: (observer: Observer) => void;
+}
 
-// funcion que recibe una funcion
-function createAdder(a: number): (b: number) => number {
-  return function(b): number {
-    return a + b
+class BitcoinPrice implements Subject {
+  observers: Observer[] = [];
+
+  constructor() {
+    const el: HTMLInputElement = document.querySelector('#value')!;
+    el.addEventListener('input', () => {
+      this.notify(el.value);
+    });
+  }
+
+  subscribe(observer: Observer) {
+    this.observers.push(observer);
+  }
+
+  unsubscribe(observer: Observer) {
+    const index = this.observers.findIndex(obs => {
+      return obs === observer;
+    });
+
+    this.observers.splice(index, 1);
+  }
+
+  notify(data: any) {
+    this.observers.forEach(observer => observer.update(data));
   }
 }
-const addCuatro = createAdder(4)
-const suma = addCuatro(6)
 
-console.log(suma)
+class PriceDisplay implements Observer {
+  private el: HTMLElement;
 
-// interfaces
-enum Color {
-  Rojo = 'Rojo',
-  Verde = 'Verde'
-}
-interface Rectangulo {
-  ancho : number;
-  alto : number;
-  color ?: Color
+  constructor() {
+    this.el = document.querySelector('#price')!;
+  }
+
+  update(data: any) {
+    this.el.innerText = data;
+  }
 }
 
-let rect: Rectangulo = {
-  ancho: 4,
-  alto : 6,
-  color : Color.Rojo
-}
+const value = new BitcoinPrice();
+const display = new PriceDisplay();
 
-function area(r: Rectangulo) {
-  return r.alto * r.ancho;
-}
+value.subscribe(display);
 
-const areaRect = area(rect);
-console.log(`este es el area de un rectangulo ${areaRect}`)
-
-rect.toString = function () {
-  return this.color ? `Un rectangulo ${this.color}` : 'Un rectangulo';
-}
-console.log(rect.toString())
+setTimeout(() => value.unsubscribe(display), 5000);

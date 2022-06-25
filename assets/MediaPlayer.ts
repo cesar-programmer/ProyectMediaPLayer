@@ -5,13 +5,22 @@
 class MediaPlayer {
   media: HTMLMediaElement;
   plugins: Array<any>;
+  container: HTMLElement;
 
   constructor(config) {
     this.media = config.el;
     this.plugins = config.plugins || [];
+    this.initPlayer();
     this.inintPlugins();
     // aqui con el or estamos agregando un array vacio solo para que
     // funcione incluso si los plugins no funcionanan es un valor por defecto
+  }
+
+  initPlayer() {
+    this.container = document.createElement('div');
+    this.container.style.position = 'relative';
+    this.media.parentNode!.insertBefore(this.container, this.media);
+    this.container.appendChild(this.media);
   }
 
   // aqui inicializo los plugins uno por unno con forEach
